@@ -1,0 +1,29 @@
+{
+  "name": "prography_nodejs_4_quest",
+  "version": "1.0.0",
+  "description": "web crawler in nodejs",
+  "main": "./scr/index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node ./src/index.js ",
+    "build": "babel ./src/index.js -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whtnrms2017/prography_nodejs_4_quest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whtnrms2017/prography_nodejs_4_quest/issues"
+  },
+  "homepage": "https://github.com/whtnrms2017/prography_nodejs_4_quest#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.10"
+  }
+}
