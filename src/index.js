@@ -2,13 +2,17 @@ import express from 'express';
 import crawler from './crawler';
 import rp from 'request-promise';
 import iconv from 'iconv-lite';
+import urls from './urls';
 
 const app = express();
-const uri = 'http://www.kyobobook.co.kr/search/SearchCommonMain.jsp?vPstrCategory=TOT&vPstrKeyWord=node.js&vPplace=top';
+
 app.get('/run_crawl', async (req, res) => {
-  const result = await rp({ uri, encoding: null });
-  const decoded_result = iconv.decode(new Buffer(result), 'EUC-KR').toString();
-  crawler(decoded_result);
+  const result_list = await Promise.all(urls.map(async (url) => {
+    const result = await rp({ url, encoding: null });
+    const decoded_result = iconv.decode(new Buffer(result), 'EUC-KR').toString();
+    return crawler(decoded_result);
+  }));
+  // console.log(result_list);
 })
 
 app.get('/list', (req, res) => {
